@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from 'expo-font';
-import { ActivityIndicator, StyleSheet, TextInput, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import { useEffect } from 'react';
 
 import { colors, Spinners } from '@core';
-import { Button } from 'core/components';
+import { Button, Input } from 'core/components';
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -26,10 +26,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Input value='' onChange={(value) => console.log(value)} />
       <Button onPress={() => console.log('Button Pressed')} title="Button"></Button>
       <Spinners />
       <ActivityIndicator size="large" color={colors.primary} />
-      <TextInput style={{borderWidth: 1, borderColor: 'black', padding: 10, borderRadius: 10, width: 200}} placeholder="Email" />
     </View>
   );
 }
