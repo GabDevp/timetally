@@ -51,10 +51,10 @@
     "arrowParens": "avoid",
     "bracketSameLine": true,
     "bracketSpacing": true,
-    "trainlingComma": "all",
+    "trailingComma": "all",
     "singleQuote": true,
     "parser": "typescript",
-    "semi": false,
+    "semi": false,    
     "jsxSingleQuote": true
   }
 }
