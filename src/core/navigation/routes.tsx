@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
+import { Login, Register } from '@containers';
 
 const headerShown = {headerShown: false}
 
@@ -12,8 +13,8 @@ export const Routes = () => {
     function AuthStack(){
         return (
             <Stack.Navigator>
-                <Stack.Screen name="Login" component={() => <Text>Login</Text>} options={headerShown} />
-                <Stack.Screen name="Register" component={() => <Text>Register</Text>} options={headerShown} />
+                <Stack.Screen name="Login" component={Login} options={headerShown} />
+                <Stack.Screen name="Register" component={Register} options={headerShown} />
             </Stack.Navigator>
         )
     }

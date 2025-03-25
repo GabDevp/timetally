@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     txt: {
-        color: 'white'
+        color: colors.white,
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 })
