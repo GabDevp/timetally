@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import { useEffect } from 'react';
 
-import { colors, Spinners } from '@core';
+import { colors, Routes, Spinners } from '@core';
 import { Button, Input } from 'core/components';
 
 export default function App() {
@@ -25,12 +25,13 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Input value='' onChange={(value) => console.log(value)} />
-      <Button onPress={() => console.log('Button Pressed')} title="Button"></Button>
-      <Spinners />
-      <ActivityIndicator size="large" color={colors.primary} />
-    </View>
+    // <View style={styles.container}>
+    //   <Input value='' onChange={(value) => console.log(value)} />
+    //   <Button onPress={() => console.log('Button Pressed')} title="Button"></Button>
+    //   <Spinners />
+    //   <ActivityIndicator size="large" color={colors.primary} />
+    // </View>
+    <Routes/>
   );
 }
 
