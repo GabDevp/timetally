@@ -11,8 +11,8 @@ export const Home = ({ route }: any) => {
     
     return (
         <View style={[styles.container, {paddingTop: top}]}>
-            <Text style={styles.title}>Bienvenido {params.firstName}</Text>
-            <Text style={styles.subTitle}>Listado de Empresas</Text>
+            {params.gender === 'female' ? <Text style={styles.title}>Bienvenida {params.firstName}</Text> : <Text style={styles.title}>Bienvenido {params.firstName}</Text>}
+            <Text style={styles.subTitle}>Datos personales</Text>
             <FlatList
                 data={params.subs}
                 renderItem={({ item }) => (

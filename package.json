@@ -24,7 +24,8 @@
     "react-native-screen": "^1.0.1",
     "react-native-screens": "^4.9.2",
     "undici": "^7.5.0",
-    "web-streams-polyfill": "^4.1.0"
+    "web-streams-polyfill": "^4.1.0",
+    "@expo/vector-icons": "^14.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
