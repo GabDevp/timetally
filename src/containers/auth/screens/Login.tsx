@@ -1,25 +1,70 @@
 /* eslint-disable prettier/prettier */
-import { StyleSheet, Text, View, Button as RNButton } from 'react-native'
+import { StyleSheet, Text, View, Button as RNButton, Alert } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import React from 'react'
-import { Button, Input } from '@core';
+import { API_URL, Button, Input, makeHttpRequest, Spinners } from '@core';
 
-export const Login = () => {
+export const Login = ({ navigation }: any) => {
     const { top } = useSafeAreaInsets();
+
+    const [loading, setLoading] = React.useState(false);
+    const [usr, setUser] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    async function onSubmit() {
+        if (!usr || !password) {
+            Alert.alert('Error', 'Surgion un error en uno de los campos, verificalos e intenta de nuevo');
+            return
+        }
+        setLoading(true);
+        try {
+            const response = await makeHttpRequest({
+                host: API_URL,
+                path: 'auth/login',
+                method: 'POST',
+                body: {
+                    username: usr.toLowerCase(),
+                    password: password.toLowerCase(),
+                },
+            })
+            if (!response) {
+                Alert.alert('Error', 'Surgion un error al iniciar sesion' + response.body);
+                return
+            }else{
+                const datos = await makeHttpRequest({
+                    host: API_URL,
+                    path: 'auth/me',
+                    token: response.accessToken,
+                    method: 'GET',
+                })
+                if (!datos) {
+                    Alert.alert('Error', 'Surgion un error' + datos.body);
+                    return
+                }
+                navigation.navigate('Tabs', { screen: 'Home', params: datos });
+            }
+        } catch (error: any) {
+            Alert.alert('Error', error.message)
+        }
+        setLoading(false);
+    }
 
     return (
         <View style={[styles.container, {paddingTop: top + 50}]}>
             <Text style={styles.title}>Inicia Sesion</Text>
             <View style={styles.input}>
-                <Text style={styles.label}>Email</Text>
-                <Input value='' onChange={(value) => console.log(value)}  />
+                <Text style={styles.label}>Username</Text>
+                <Input value={usr} onChange={setUser}  />
             </View>
             <View style={styles.input}>
                 <Text style={styles.label}>Password</Text>
-                <Input value='' onChange={(value) => console.log(value)} />
+                <Input value={password} onChange={setPassword} />
             </View>
             <View style={styles.button}>
-                <Button onPress={() => console.log('Login')} title="Iniciar Sesion"></Button>
+                {loading 
+                ? <Spinners /> : 
+                <Button onPress={() => onSubmit()} title="Iniciar Sesion"></Button>
+                }
                 <RNButton onPress={() => console.log('Register')} title="Crear Cuenta"></RNButton>
             </View>
         </View>

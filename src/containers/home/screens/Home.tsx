@@ -1,17 +1,29 @@
 /* eslint-disable prettier/prettier */
-import { StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import React from 'react'
+import { colors } from '@core';
 
-export const Home = () => {
+export const Home = ({ route }: any) => {
     const { top } = useSafeAreaInsets();
-
+    const params = route.params
+    console.log(params);
+    
     return (
         <View style={[styles.container, {paddingTop: top}]}>
-            <Text style={styles.title}>Bienvenido</Text>
-            <Text style={styles.subTitle}>Planes y servicios</Text>
-            <Text style={styles.subTitle}>Reservas</Text>
-            
+            <Text style={styles.title}>Bienvenido {params.firstName}</Text>
+            <Text style={styles.subTitle}>Listado de Empresas</Text>
+            <FlatList
+                data={params.subs}
+                renderItem={({ item }) => (
+                    <View style={styles.text}>
+                        <Text style={styles.text}>Empresa {item.name}</Text>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={{color: 'white', fontFamily: 'PlaypenSans-Regular'}}>Mirar Informe</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
+            />
         </View>
     )
 }
@@ -23,16 +35,23 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     title: {
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: 'bold',
         fontFamily: 'PlaypenSans-Bold',
-        textAlign: 'center', 
+        textAlign: 'center',
+        marginBottom: 10,
     },
     subTitle: {
         fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 100,
-        fontFamily: 'PlaypenSans-Bold',
+        fontFamily: 'PlaypenSans-Regular',
+        textAlign: 'left',
+        marginBottom: 10,
+        marginTop: 20
+    },
+    text: {
+        fontSize: 15,
+        marginTop: 30,
+        fontFamily: 'PlaypenSans-Regular',
         textAlign: 'center',
     },
     input: {
@@ -48,10 +67,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     button: {
-        height: 100,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        marginTop: 20,
+        alignContent: 'center',
+        backgroundColor: colors.primary,
+        borderRadius: 15,
+        height: 35,
+        display: 'flex',
+        width: '50%',
+        alignSelf: 'center',
+        marginTop: 8
     }
 })
