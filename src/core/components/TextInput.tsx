@@ -9,7 +9,7 @@ interface TextInputProps {
 
 export const Input = ({ value, onChange }: TextInputProps) => {
     return (
-        <TextInput style={styles.input} placeholder="Email"  onChangeText={onChange} value={value} ></TextInput>
+        <TextInput style={styles.input} onChangeText={onChange} value={value} ></TextInput>
     )
 }
 
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
         borderRadius: 5,
         padding: 10,
-        width: 200,
+        width: '100%',
         shadowColor: '#000',
         shadowOffset: {
             width: 0,

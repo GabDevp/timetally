@@ -2,10 +2,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export const Register = () => {
+export const Profile = () => {
   return (
     <View>
-      <Text>Register</Text>
+      <Text>Profile</Text>
     </View>
   )
 }

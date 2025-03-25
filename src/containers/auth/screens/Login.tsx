@@ -9,7 +9,7 @@ export const Login = () => {
 
     return (
         <View style={[styles.container, {paddingTop: top + 50}]}>
-            <Text style={styles.title}>Login Screen</Text>
+            <Text style={styles.title}>Inicia Sesion</Text>
             <View style={styles.input}>
                 <Text style={styles.label}>Email</Text>
                 <Input value='' onChange={(value) => console.log(value)}  />

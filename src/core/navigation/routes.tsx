@@ -3,8 +3,7 @@ import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text } from 'react-native';
-import { Login, Register } from '@containers';
+import { Home, Login, Profile, Register } from '@containers';
 
 const headerShown = {headerShown: false}
 
@@ -23,15 +22,15 @@ export const Routes = () => {
     function TabStack(){
         return (
             <Tabs.Navigator>
-                <Tabs.Screen name="Home" component={() => <Text>Home</Text>} options={headerShown} />
-                <Tabs.Screen name="Profile" component={() => <Text>Profile</Text>} options={headerShown} />
+                <Tabs.Screen name="Home" component={Home} options={headerShown} />
+                <Tabs.Screen name="Profile" component={Profile} options={headerShown} />
             </Tabs.Navigator>
         )
     }
     
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Auth' >
+            <Stack.Navigator initialRouteName='Tabs' >
                 <Stack.Screen name="Auth" component={AuthStack} options={headerShown} />
                 <Stack.Screen name="Tabs" component={TabStack} options={headerShown} />
             </Stack.Navigator>
