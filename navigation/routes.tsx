@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { Home, Login, Profile, Register } from '@containers';
+import { Emergency, Funerary, Home, Login, Profile, Register } from '@containers';
 
 const headerShown = {headerShown: false}
 
@@ -20,23 +20,38 @@ export const Routes = () => {
         )
     }
 
+    const HomeStack = createNativeStackNavigator();
+
+    function HomeStackScreen() {
+    return (
+        <HomeStack.Navigator screenOptions={{ headerShown: false, animation: 'slide_from_bottom' }} >
+            <HomeStack.Screen name="HomeMain" component={Home} />
+            <HomeStack.Screen name="HomeEmergency" component={Emergency} />
+            <HomeStack.Screen name="Funerary" component={Funerary} />
+            {/* Agrega aquí todas las pantallas de servicios */}
+        </HomeStack.Navigator>
+    );
+    }
+
     const Tabs = createBottomTabNavigator();
-    function TabStack(){
+    function TabStack({ route } : any) {
+        // Recibe parámetros de navegación
+        const initialParams = route.params || {};
         return (
             <Tabs.Navigator
                 screenOptions={({ route }) => ({
-                tabBarActiveTintColor: 'black',
-                tabBarInactiveTintColor: 'gray',
-                tabBarStyle: { height: 100 },
-                tabBarIcon: ({ focused, color, size }) => {
-                    const iconName = route.name === 'Home' ? 'home' : 'person'
-                    return (
-                        <MaterialIcons name={iconName} size={25} color={focused ? 'black' : 'gray'} style={{ marginTop: 10 }}/>
-                    )
-                },
+                    tabBarActiveTintColor: 'black',
+                    tabBarInactiveTintColor: 'gray',
+                    tabBarStyle: { height: 100 },
+                    tabBarIcon: ({ focused, color, size }) => {
+                        const iconName = route.name === 'Home' ? 'home' : 'person'
+                        return (
+                            <MaterialIcons name={iconName} size={25} color={focused ? 'black' : 'gray'} style={{ marginTop: 10 }}/>
+                        )
+                    },
                 })}>
-                <Tabs.Screen name="Home" component={Home} options={headerShown} />
-                <Tabs.Screen name="Profile" component={Profile} options={headerShown} />
+                <Tabs.Screen name="Home" component={HomeStackScreen} options={headerShown} initialParams={initialParams} />
+                <Tabs.Screen name="Profile" component={Profile} options={headerShown} initialParams={initialParams} />
             </Tabs.Navigator>
         )
     }

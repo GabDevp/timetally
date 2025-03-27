@@ -23,8 +23,8 @@ export const Login = ({ navigation }: any) => {
                 path: 'auth/login',
                 method: 'POST',
                 body: {
-                    username: usr.toLowerCase(),
-                    password: password.toLowerCase(),
+                    username: usr.toLowerCase().trim(),
+                    password: password.toLowerCase().trim(),
                 },
             })
             if (!response) {
@@ -41,7 +41,7 @@ export const Login = ({ navigation }: any) => {
                     Alert.alert('Error', 'Surgion un error' + datos.body);
                     return
                 }
-                navigation.navigate('Tabs', { screen: 'Home', params: datos });
+                navigation.reset({ index: 0, routes: [{ name: 'Tabs', params: { screen: 'HomeMain', params: datos } }] });
             }
         } catch (error: any) {
             Alert.alert('Error', error.message)
