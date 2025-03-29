@@ -6,19 +6,19 @@ import { colors } from '@core';
 
 const gridData = [
     { id: '1', title: 'Emergencias', icon: '🚨', screen: 'HomeEmergency' },
-    { id: '2', title: 'Reservar Futbol', icon: '⚽', screen: '' },
-    { id: '3', title: 'Reservar Voley', icon: '🏐', screen: '' },
-    { id: '4', title: 'Reservar Cumpleaños/eventos', icon: '🎊', screen: '' },
-    { id: '5', title: 'Reservar Uñas', icon: '💅🏻', screen: '' },
-    { id: '6', title: 'Reservar taxi', icon: '🚕', screen: '' },
-    { id: '7', title: 'Reservar Comida', icon: '🍽️', screen: '' },
-    { id: '8', title: 'Reservar Hospedaje', icon: '🏨', screen: '' },
-    { id: '9', title: 'Reservar Fotografia', icon: '📸', screen: '' },
-    { id: '10', title: 'Reservar Veterineria', icon: '🐶', screen: '' },
-    { id: '11', title: 'Reservar Peluqueria', icon: '💇🏻‍♂️', screen: '' },
-    { id: '12', title: 'Reservar Boda', icon: '👰🏻', screen: '' },
+    { id: '2', title: 'Reservar Futbol', icon: '⚽', screen: 'Futbol' },
+    { id: '3', title: 'Reservar Voley', icon: '🏐', screen: 'Voley' },
+    { id: '4', title: 'Reservar Cumpleaños/eventos', icon: '🎊', screen: 'Events' },
+    { id: '5', title: 'Reservar Uñas', icon: '💅🏻', screen: 'Nails' },
+    { id: '6', title: 'Servicio de Taxis', icon: '🚕', screen: 'Taxis' },
+    { id: '7', title: 'Reservar Comida', icon: '🍽️', screen: 'Eats' },
+    { id: '8', title: 'Reservar Hospedaje', icon: '🏨', screen: 'Hosting' },
+    { id: '9', title: 'Reservar Fotografia', icon: '📸', screen: 'Photography' },
+    { id: '10', title: 'Reservar Veterineria', icon: '🐶', screen: 'Veterinary' },
+    { id: '11', title: 'Reservar Peluqueria', icon: '💇🏻‍♂️', screen: 'Haird' },
+    { id: '12', title: 'Reservar Boda', icon: '👰🏻', screen: 'Boda' },
     { id: '13', title: 'Funerarias', icon: '⚰️', screen: 'Funerary' },
-    { id: '14', title: 'Citas Agendadas', icon: '📅', screen: '' },
+    { id: '14', title: 'Citas Agendadas', icon: '📅', screen: 'Calendar' },
 ];
 
 export const Home = ({ route, navigation }: any) => {
@@ -35,7 +35,7 @@ export const Home = ({ route, navigation }: any) => {
                 numColumns={2} // Número de columnas
                 columnWrapperStyle={styles.gridRow}
                 renderItem={({ item }) => (
-                    <TouchableOpacity style={styles.gridItem} onPress={() => navigation.navigate(item.screen)}>
+                    <TouchableOpacity style={styles.gridItem} onPress={() => navigation.navigate(item.screen, { userData: params })}>
                         <Text style={styles.gridIcon}>{item.icon}</Text>
                         <Text style={styles.gridText}>{item.title}</Text>
                     </TouchableOpacity>

@@ -5,7 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { Emergency, Funerary, Home, Login, Profile, Register } from '@containers';
+import { Emergency, Funerary, Futbol, Home, Login, Profile, Register, Taxis } from '@containers';
+import { Book } from 'store/screens';
 
 const headerShown = {headerShown: false}
 
@@ -28,6 +29,8 @@ export const Routes = () => {
             <HomeStack.Screen name="HomeMain" component={Home} />
             <HomeStack.Screen name="HomeEmergency" component={Emergency} />
             <HomeStack.Screen name="Funerary" component={Funerary} />
+            <HomeStack.Screen name="Taxis" component={Taxis} />
+            <HomeStack.Screen name="Futbol" component={Futbol} />
             {/* Agrega aquí todas las pantallas de servicios */}
         </HomeStack.Navigator>
     );
@@ -61,6 +64,7 @@ export const Routes = () => {
             <Stack.Navigator initialRouteName='Auth' >
                 <Stack.Screen name="Auth" component={AuthStack} options={headerShown} />
                 <Stack.Screen name="Tabs" component={TabStack} options={headerShown} />
+                <Stack.Screen name="Book" component={Book} options={headerShown} initialParams={{ userData: {}, itemData: {} }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
