@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { Emergency, Funerary, Futbol, Home, Login, Profile, Register, Taxis } from '@containers';
+import { Emergency, Foods, Funerary, Futbol, Home, Login, Nails, Profile, Register, Rooms, Taxis, Voley } from '@containers';
 import { Book } from 'store/screens';
 
 const headerShown = {headerShown: false}
@@ -31,6 +31,10 @@ export const Routes = () => {
             <HomeStack.Screen name="Funerary" component={Funerary} />
             <HomeStack.Screen name="Taxis" component={Taxis} />
             <HomeStack.Screen name="Futbol" component={Futbol} />
+            <HomeStack.Screen name="Voley" component={Voley} />
+            <HomeStack.Screen name="Nails" component={Nails} />
+            <HomeStack.Screen name="Eats" component={Foods} />
+            <HomeStack.Screen name="Hosting" component={Rooms} />
             {/* Agrega aquí todas las pantallas de servicios */}
         </HomeStack.Navigator>
     );

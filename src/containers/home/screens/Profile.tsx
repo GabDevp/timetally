@@ -4,7 +4,7 @@ import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@core';
 
-export const Profile  = ({ route }: any) => {
+export const Profile  = ({ route, navigation }: any) => {
   const { top } = useSafeAreaInsets();
   const params = route.params.params
   console.log(params);
@@ -26,10 +26,7 @@ export const Profile  = ({ route }: any) => {
       <Text style={styles.text}>Edad: {params.age} </Text>
 
       <View style={styles.buttonsContainer}>
-        {/* <TouchableOpacity style={styles.button} onPress={() => { console.log('editar'); }}>
-          <Text style={styles.label}> Editar Perfil </Text>
-        </TouchableOpacity> */}
-        <TouchableOpacity style={styles.logoutButton} onPress={() => { console.log('cerrar'); }}>
+        <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Auth' }] })}>
           <Text style={styles.label}> Cerrar Sesion </Text>
         </TouchableOpacity>
       </View>

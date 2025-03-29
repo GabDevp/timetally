@@ -28,7 +28,8 @@
     "undici": "^7.5.0",
     "web-streams-polyfill": "^4.1.0",
     "react-native-gesture-handler": "~2.20.2",
-    "react-native-reanimated": "~3.16.1"
+    "react-native-reanimated": "~3.16.1",
+    "@react-native-community/datetimepicker": "8.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

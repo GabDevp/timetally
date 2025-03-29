@@ -65,7 +65,7 @@ export const Login = ({ navigation }: any) => {
                 ? <Spinners /> : 
                 <Button onPress={() => onSubmit()} title="Iniciar Sesion"></Button>
                 }
-                <RNButton onPress={() => console.log('Register')} title="Crear Cuenta"></RNButton>
+                <RNButton onPress={() => navigation.navigate('Register')} title="Crear Cuenta"></RNButton>
             </View>
         </View>
     )

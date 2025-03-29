@@ -24,7 +24,7 @@ export const Book = ({ route, navigation }: any) => {
     const handleConfirm = () => {
         Alert.alert(
         'Reserva Confirmada',
-        `Cliente: ${userData.name}\nServicio: ${itemData.title}\nFecha: ${selectedDate}`,
+        `Cliente: ${userData.firstName}\nServicio: ${itemData.title}\nFecha: ${selectedDate}`,
         [
             {
             text: 'OK',
@@ -35,12 +35,7 @@ export const Book = ({ route, navigation }: any) => {
         );
     };
 
-    const handleCancel = () => {
-        navigation.reset({
-            index: 0,
-            routes: [{ name: 'Tabs', params: { screen: 'HomeMain'} }]
-        });
-    };
+    const handleCancel = () => navigation.reset({ index: 0, routes: [{ name: 'Tabs', params: { screen: 'HomeMain', params: userData } }] });
 
     return (
         <ScrollView style={[styles.container, {paddingTop: top + 30}]}>
@@ -55,8 +50,8 @@ export const Book = ({ route, navigation }: any) => {
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>Detalles de la Reserva</Text>
                 <View style={styles.infoCard}>
-                <Text style={styles.infoText}>Cancha: {itemData.title}</Text>
-                <Text style={styles.infoText}>Tipo: {itemData.subtitle}</Text>
+                <Text style={styles.infoText}>Tipo: {itemData.title} </Text>
+                <Text style={styles.infoText}>Detalle: {itemData.subtitle} </Text>
                 <Text style={styles.infoText}>Precio: {itemData.price}</Text>
                 </View>
             </View>
